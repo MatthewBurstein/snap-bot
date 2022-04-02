@@ -1,6 +1,6 @@
 package snapbot.domain
 
-case class Game(
-  numberOfDecks: Int,
-  matchType:     MatchType
+case class Game (
+  matchType: MatchStrategy,
+  players:   List[Player]
 )

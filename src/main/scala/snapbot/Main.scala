@@ -1,9 +1,11 @@
 package snapbot
 
-import snapbot.service.GameInitializerService
+import snapbot.service.{GameInitializerService, GameService, ShufflerService}
 
 object Main extends App {
-  val gameInitializerService = new GameInitializerService
+  val shufflerService = new ShufflerService
+  val gameService = new GameService(shufflerService)
+  val gameInitializerService = new GameInitializerService(gameService)
 
   val game = gameInitializerService.initialize()
 }

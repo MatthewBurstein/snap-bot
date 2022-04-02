@@ -1,10 +1,10 @@
 package snapbot.service
 
-import snapbot.domain.{Game, MatchType}
+import snapbot.domain.{Game, MatchStrategy}
 
 import scala.io.StdIn
 
-class GameInitializerService {
+class GameInitializerService(gameService: GameService) {
   def initialize(): Game = {
     println("Let's play snap! How many decks should we use?")
 
@@ -15,8 +15,8 @@ class GameInitializerService {
 
     // TODO what if this is not valid
     val matchTypeStr = StdIn.readLine()
-    val matchType = MatchType.fromString(matchTypeStr)
+    val matchType = MatchStrategy.fromString(matchTypeStr)
 
-    Game(numberOfDecksStr, matchType)
+    gameService.create(numberOfDecksStr, matchType)
   }
 }
