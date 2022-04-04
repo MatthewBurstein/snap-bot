@@ -20,7 +20,11 @@ class GameInitializerServiceTest extends UnitTest {
     "consume input and construct game with appropriate number of decks and matchType" in {
       val cards1 = List(Card(CardValues.Ace, Suits.Hearts))
       val cards2 = List(Card(CardValues.Two, Suits.Diamonds))
-      val expectedGame = Game(MatchSuit, List(Player(PlayerId("player1"), cards1), Player(PlayerId("player2"), cards2)))
+      val expectedGame = Game(
+        MatchSuit,
+        List(Player(PlayerId("player1"), cards1), Player(PlayerId("player2"), cards2)),
+        List.empty
+      )
 
       val numberOfDecksInput = "2"
       val matchTypeInput = "s"

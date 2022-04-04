@@ -1,18 +1,18 @@
 package snapbot.domain
 
 case class Player private (
-  playerId: PlayerId,
-  stack:    List[Card],
-  pile:     List[Card]
+                            playerId: PlayerId,
+                            hand:    List[Card]
 ) {
-  def takeTurn(): Player = stack match {
-    case Nil => this //TODO what should happen here
-    case first :: tail => copy(stack = tail, pile = first +: pile)
+  def takeTurn(): (Option[Card], Player) = {
+    println(s"HAND SIZE: $playerId ${hand.length}")
+    hand match {
+      case Nil => (None, this)
+      case firstCard :: rest => (Some(firstCard), copy(hand = rest))
+    }
   }
-}
 
-object Player {
-  def apply(playerId: PlayerId, stack: List[Card]): Player = Player(playerId, stack, List.empty)
+  def hasId(testPlayerId: PlayerId): Boolean = playerId == testPlayerId
 }
 
 case class PlayerId(value: String)

@@ -11,7 +11,7 @@ class MatchStrategyTest extends UnitTest {
       MatchStrategy.fromString("v") shouldBe MatchValue
     }
     "parse MatchBoth from b" in {
-      MatchStrategy.fromString("b") shouldBe MatchBoth
+      MatchStrategy.fromString("b") shouldBe MatchSuitAndValue
     }
 
     "throw an error on unknown value" in {

@@ -10,6 +10,6 @@ optional
 - ask for how many players
 
 ## Model
-Game has N players and a MatchStrategy
-Player has a stack (yet to play) and a pile (have been played)
+Game has N players, a MatchStrategy and a stack of cards on the table
+Player has a hand
 
